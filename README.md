@@ -7,5 +7,5 @@
 ## Resultado
 
 <p align="center">
-  <img alt="Resultado" src="images/size.png" width="50%">
+  <img alt="Resultado" src="images/sizes.png" width="50%">
 </p>
