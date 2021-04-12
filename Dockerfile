@@ -1,15 +1,17 @@
-FROM golang:alpine
+FROM golang:alpine as builder
 
 WORKDIR /go/src
 
 COPY . .
 
-RUN GOOS=linux go build exemplo.go
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
+    -ldflags='-w -s -extldflags "-static"' -a \
+    -o /go/src/exemplo .
 
 FROM scratch 
 
 WORKDIR /go/src
 
-COPY ./exemplo ./exemplo
+COPY --from=builder /go/src/exemplo /go/src/exemplo
 
 CMD ["./exemplo"]
