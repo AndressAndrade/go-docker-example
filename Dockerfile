@@ -1,4 +1,4 @@
-FROM golang:alpine as builder
+FROM golang:alpine AS builder
 
 WORKDIR /go/src
 
@@ -12,6 +12,6 @@ FROM scratch
 
 WORKDIR /go/src
 
-COPY --from=builder /go/src/exemplo /go/src/exemplo
+COPY --from=builder /go/src/exemplo .
 
 CMD ["./exemplo"]
